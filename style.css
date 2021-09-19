@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    flex-direction: column;
+}
+
+.change_color {
+    background-color: #003b94;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    margin-top: 25px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.change_color:active {
+    background-color: #001433;
+}
+
+.container {
+    width: 80%;
+    text-align: center;
+    padding: 150px;
+    border-radius: 35px;
+}
+
+.container h1 {
+    font-size: 3rem;
+}
