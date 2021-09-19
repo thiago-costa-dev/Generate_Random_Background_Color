@@ -8,34 +8,34 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function generateRandomHex() {
-    const possibleValues = '0123456789ABCDEF';
+const hexFunctions = {
+    possibleValues: '0123456789ABCDEF',
 
-    let hexColor = '#';
-    for (let i = 0; i < 6; i++) {
-        hexColor += possibleValues.substr(getRandomInt(possibleValues.length), 1);
+    generateRandomHex: function () {
+        let hexColor = '#';
+        for (let i = 0; i < 6; i++) {
+            hexColor += this.possibleValues.substr(getRandomInt(this.possibleValues.length), 1);
+        }
+
+        return hexColor;
+    },
+    
+    invertHexColor: function (hexCode) {
+        let newHex = '#';
+
+        for (let i = 0; i < 6; i++) {
+            const newIndex = -this.possibleValues.indexOf(hexCode[i]) + this.possibleValues.length - 1;
+            newHex += this.possibleValues[newIndex];
+        }
+
+        return newHex;
     }
-
-    return hexColor;
-}
-
-function invertHexColor(hexCode) {
-    let newHex = '#';
-
-    const possibleValues = '0123456789ABCDEF';
-
-    for (let i = 0; i < 6; i++) {
-        const newIndex = -possibleValues.indexOf(hexCode[i]) + possibleValues.length - 1;
-        newHex += possibleValues[newIndex];
-    }
-
-    return newHex;
-}
+};
 
 function changeColor() {
-    const newColor = generateRandomHex();
+    const newColor = hexFunctions.generateRandomHex();
 
     container.style.backgroundColor = newColor;
     color.innerHTML = newColor;
-    color.style.color = invertHexColor(newColor.replace('#', ''));
+    color.style.color = hexFunctions.invertHexColor(newColor.replace('#', ''));
 }
